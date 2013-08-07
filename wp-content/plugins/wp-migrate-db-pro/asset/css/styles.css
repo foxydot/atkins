@@ -445,7 +445,7 @@
 .wpmdb .label-disabled {
   color: #888;
 }
-.wpmdb .prefix-notice, .wpmdb .ssl-notice, .wpmdb .different-plugin-version-notice {
+.wpmdb .prefix-notice, .wpmdb .ssl-notice, .wpmdb .different-plugin-version-notice, .wpmdb .mysqli-notice {
   background-color: #FFFFE0;
   border: 1px solid #E6DB55;
   padding: 15px;
@@ -454,19 +454,22 @@
   display: none;
   width: 710px;
 }
-.wpmdb .prefix-notice p, .wpmdb .ssl-notice p, .wpmdb .different-plugin-version-notice p {
+.wpmdb .prefix-notice p, .wpmdb .ssl-notice p, .wpmdb .different-plugin-version-notice p, .wpmdb .mysqli-notice p {
   margin-top: 0px;
 }
-.wpmdb .prefix-notice p:last-child, .wpmdb .ssl-notice p:last-child, .wpmdb .different-plugin-version-notice p:last-child {
+.wpmdb .prefix-notice p:last-child, .wpmdb .ssl-notice p:last-child, .wpmdb .different-plugin-version-notice p:last-child, .wpmdb .mysqli-notice p:last-child {
   margin: 0px;
 }
-.wpmdb .different-plugin-version-notice {
+.wpmdb .different-plugin-version-notice, .wpmdb .mysqli-notice {
   background-color: #FFEBE8;
   border-color: #CC0000;
 }
-.wpmdb .different-plugin-version-notice a {
+.wpmdb .different-plugin-version-notice a, .wpmdb .mysqli-notice a {
   color: #CC0000;
   text-decoration: underline;
+}
+.wpmdb .mysqli-notice {
+  display: block;
 }
 .wpmdb .ssl-notice {
   margin-bottom: 0;

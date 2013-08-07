@@ -15,16 +15,31 @@ hr.div {
 	width: 16px;
 }
 
-/* Genesis Upgraded ----------- */
-
-.full-width-image {
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	max-width: 100%;
+.admin-color-mp6 #adminmenu .toplevel_page_genesis .wp-menu-image img {
+	display: none;
 }
+
+.admin-color-mp6 #adminmenu .toplevel_page_genesis .wp-menu-image:before {
+	content: 'G';
+	font-family: 'Open Sans', sans-serif !important;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+
+/* Scribe nag ----------- */
+
+.scribe-nag {
+	overflow: hidden;
+}
+
+
+/* Genesis upgraded ----------- */
 
 .whats-new {
 	border-radius: 5px;
+	height: 180px;
+	width: 160px;
 }
 
 
@@ -39,8 +54,11 @@ hr.div {
 /* Genesis metabox styles ----------- */
 
 .genesis-metaboxes {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	padding-bottom: 20px;
-	width: 650px;
+	width: 690px;
 }
 
 .genesis-metaboxes h2 {
@@ -49,7 +67,6 @@ hr.div {
 
 .genesis-metaboxes .top-buttons {
 	float: right;
-	padding-right: 20px;
 }
 
 .genesis-metaboxes .top-buttons input {
@@ -57,7 +74,6 @@ hr.div {
 }
 
 .genesis-metaboxes .bottom-buttons {
-	padding-right: 20px;
 	text-align: right;
 }
 
@@ -67,16 +83,19 @@ hr.div {
 
 .genesis-metaboxes .metabox-holder {
 	clear: both;
-	overflow: hidden;
-	width: 650px;
-}
-
-.genesis-metaboxes .meta-box-sortables {
-	padding-right: 10px;
 }
 
 .genesis-metaboxes .inside {
+	overflow: hidden;
 	padding: 0 10px;
+}
+
+.postbox-container {
+	width: 100%;
+}
+
+.postbox .inside > p:last-child {
+	margin: 1em 0 !important;
 }
 
 .genesis-metaboxes fieldset {
@@ -95,7 +114,7 @@ hr.div {
 	text-align: center;
 }
 
-.genesis-layout-selector input#default-layout {
+.genesis-layout-selector .default-layout {
 	display: inline;
 }
 

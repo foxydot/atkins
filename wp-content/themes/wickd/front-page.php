@@ -10,7 +10,7 @@ function child_grid_loop_helper() {
 		'feature_image_class' => 'aligncenter post-image',
 		'feature_content_limit' => 0,
 		'grid_image_size' => 'child_thumbnail',
-		'grid_image_class' => 'alignright post-image',
+		'grid_image_class' => 'aligncenter post-image',
 		'grid_content_limit' => 0,
 		'more' => __( '[Continue reading...]', 'adaptation' ),
 		'posts_per_page' => 4,
@@ -35,9 +35,9 @@ function child_grid_loop_content() {
 
 	if ( in_array( 'genesis-feature', get_post_class() ) ) {
 		if ( $_genesis_loop_args['feature_image_size'] ) {
-			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute('echo=0'), genesis_get_image( array( 'size' => $_genesis_loop_args['feature_image_size'], 'attr' => array( 'class' => esc_attr( $_genesis_loop_args['feature_image_class'] ) ) ) ) );
+			printf( '<a href="%s" title="%s">%s</a>', get_permalink(), the_title_attribute('echo=0'), genesis_get_image( array( 'size' => $_genesis_loop_args['feature_image_size'], 'attr' => array( 'class' => esc_attr( $_genesis_loop_args['feature_image_class'] ) ), 'fallback' => array('html' => wp_get_attachment_image( get_option('fallback_image'), $_genesis_loop_args['feature_image_size'], false, $attr ), 'url' => wp_get_attachment_image_src(get_option('fallback_image'), $_genesis_loop_args['feature_image_size']) ) ) ) );
 		}
-
+		
 		the_excerpt();
 		$num_comments = get_comments_number();
 		if ($num_comments == '1') $comments = '<span>'.$num_comments.'</span> ' . __( 'comment', 'adaptation' );
@@ -45,7 +45,7 @@ function child_grid_loop_content() {
 		echo '<p class="to_comments"><span class="bracket">{</span><a href="'.get_permalink().'/#comments" rel="nofollow">'.$comments.'</a><span class="bracket">}</span></p>';
 	}
 	else {
-
+		
 		the_excerpt();
 		$num_comments = get_comments_number();
 		if ($num_comments == '1') $comments = $num_comments.' ' . __( 'comment', 'adaptation' );
@@ -58,7 +58,12 @@ function child_grid_loop_content() {
 function child_grid_loop_image() {
 	if ( in_array( 'genesis-grid', get_post_class() ) ) {
 		global $post;
-		echo '<p class="thumbnail"><a href="'.get_permalink().'">'.get_the_post_thumbnail($post->ID, 'child_thumbnail').'</a></p>';
+		if(has_post_thumbnail($post->ID)){
+			$thumb = get_the_post_thumbnail($post->ID, 'child_thumbnail');
+		} else {
+			$thumb = wp_get_attachment_image( get_option('fallback_image'), 'child_thumbnail', false, $attr );
+		}
+		print '<p class="thumbnail"><a href="'.get_permalink().'">'.$thumb.'</a></p>';
 	}
 }
 

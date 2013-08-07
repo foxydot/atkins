@@ -17,7 +17,7 @@ $is_default_profile = isset( $loaded_profile['default_profile'] );
 		var wpmdb_loaded_tables = '<?php echo json_encode( $loaded_profile['select_tables'] ); ?>';
 	<?php endif; ?>
 </script>
-	
+
 <div class="migrate-tab content-tab">
 
 	<form method="post" id="migrate-form" action="#migrate" enctype="multipart/form-data">

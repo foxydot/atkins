@@ -854,6 +854,14 @@
 									table_migration_error = true;
 								},
 								success: function(data){
+									if( $.trim( data ) != '' ){
+										$('.progress-title').html('Migration failed');
+										$('.progress-text').html(data);
+										$('.progress-text').addClass('migration-error');
+										table_migration_error = true;
+										migration_complete_events();
+										return;
+									}
 									$('.progress-text').html('Migration complete');
 									$('.progress-title').html(completed_msg);
 								}

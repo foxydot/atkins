@@ -360,8 +360,8 @@ class WP_Migrate_DB_Pro {
 	}
 
 	function is_json( $string ) {
-		json_decode($string);
-		return ( json_last_error() == JSON_ERROR_NONE );
+		$json = @json_decode( $string );
+		return ! ( $json == NULL || $json == false );
 	}
 
 	function remote_post( $url, $data, $scope, $args = array(), $expecting_json = false ) {
@@ -989,31 +989,46 @@ class WP_Migrate_DB_Pro {
 	// AJAX end point for the above AJAX call, returns table information, absolute file path, table prefix, etc
 	function ajax_establish_remote_connection() {
 		global $wpdb;
+		
 		$return = array();
-		if ( $this->verify_signature( $_POST, $this->settings['key'] ) ) {
-			if ( isset( $this->settings['allow_' . $_POST['intent']] ) && $this->settings['allow_' . $_POST['intent']] == true ) {
-				$plugin_info = get_plugin_data( $this->plugin_file_path, false, false );
-				$return['tables'] = $this->get_tables();
-				$return['table_sizes'] = $this->get_table_sizes();
-				$return['path'] = $this->absolute_root_file_path;
-				$return['url'] = home_url();
-				$return['prefix'] = $wpdb->prefix;
-				$return['bottleneck'] = $this->get_bottleneck();
-				$return['error'] = 0;
-				$return['plugin_version'] = $plugin_info['Version'];
-				$return['domain'] = ( defined( 'DOMAIN_CURRENT_SITE' ) ? DOMAIN_CURRENT_SITE : '' );
-			}
-			else {
-				$return['error'] = 1;
-				$return['message'] = 'The connection succeeded but the remote site is configured to reject ' . $_POST['intent'] . ' connections. You can change this in the "settings" tab on the remote site. (#122) <a href="#" class="try-again js-action-link">Try again?</a>';
-			}
-		}
-		else {
+		
+		if ( !$this->verify_signature( $_POST, $this->settings['key'] ) ) {
 			$return['error'] = 1;
 			$return['message'] = $this->invalid_content_verification_error . ' (#120) <a href="#" class="try-again js-action-link">Try again?</a>';
+			echo json_encode( $return );
+			exit;
 		}
-		echo json_encode( $return );
 
+		if ( false == function_exists( 'mysqli_connect' ) ) {
+			$return = array(
+				'error' 	=> 1,
+				'message'	=> 'Oops, looks like PHP\'s mysqli extension is not
+					installed on the remote server. Please contact your web
+					host or system administrator to install it and
+					continue using WP Migrate DB Pro.'
+			);
+			echo json_encode( $return );
+			exit;
+		}
+
+		if ( !isset( $this->settings['allow_' . $_POST['intent']] ) || $this->settings['allow_' . $_POST['intent']] != true ) {
+			$return['error'] = 1;
+			$return['message'] = 'The connection succeeded but the remote site is configured to reject ' . $_POST['intent'] . ' connections. You can change this in the "settings" tab on the remote site. (#122) <a href="#" class="try-again js-action-link">Try again?</a>';
+			echo json_encode( $return );
+			exit;
+		}
+
+		$plugin_info = get_plugin_data( $this->plugin_file_path, false, false );
+		$return['tables'] = $this->get_tables();
+		$return['table_sizes'] = $this->get_table_sizes();
+		$return['path'] = $this->absolute_root_file_path;
+		$return['url'] = home_url();
+		$return['prefix'] = $wpdb->prefix;
+		$return['bottleneck'] = $this->get_bottleneck();
+		$return['error'] = 0;
+		$return['plugin_version'] = $plugin_info['Version'];
+		$return['domain'] = ( defined( 'DOMAIN_CURRENT_SITE' ) ? DOMAIN_CURRENT_SITE : '' );
+		echo json_encode( $return );
 		exit;
 	}
 
@@ -1172,7 +1187,21 @@ class WP_Migrate_DB_Pro {
 					if ( isset( $_POST['import-db'] ) ) {
 						$this->import_db();
 					}
+					if( function_exists( 'mysqli_connect' ) == false ) : ?>
+					<div class="mysqli-notice migrate-tab content-tab">
+						<p>
+							<strong>MySQLi PHP Extension Not Installed</strong> &mdash;
+							Oops, looks like PHP's mysqli extension is not
+							installed on this server. Please contact your web
+							host or system administrator to install it and
+							continue using WP Migrate DB Pro.
+						</p>
+					</div>
+					<?php
+					else :
 					$this->template( 'migrate' );
+					endif;
+
 				}
 
 				$this->template( 'settings' );
@@ -1189,7 +1218,7 @@ class WP_Migrate_DB_Pro {
 	function apply_replaces( $subject, $is_serialized = false ) {
 		$search = $this->form_data['replace_old'];
 		$replace = $this->form_data['replace_new'];
-		$new = str_replace( $search, $replace, $subject, $count );
+		$new = str_ireplace( $search, $replace, $subject, $count );
 		return $new;
 	}
 
@@ -1334,6 +1363,8 @@ class WP_Migrate_DB_Pro {
 			} elseif ( isset( $this->form_data['exclude_revisions'] ) && $wpdb->posts == $table ) {
 				$where = ' WHERE post_type != "revision" ORDER BY ID';
 			}
+
+			$where = apply_filters( 'wpmdb_rows_where', $where, $table );
 
 			$table_data = $wpdb->get_results( "SELECT * FROM " . $this->backquote( $table ) . " $where LIMIT {$row_start}, {$row_inc}" );
 

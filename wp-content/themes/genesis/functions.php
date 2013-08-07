@@ -1,6 +1,6 @@
 <?php
 /*
- WARNING: This file is part of the core Genesis framework. DO NOT edit
+ WARNING: This file is part of the core Genesis Framework. DO NOT edit
  this file under any circumstances. Please do all modifications
  in the form of a child theme.
  */
@@ -18,8 +18,8 @@
  * @category Genesis
  * @package  Templates
  * @author   StudioPress
- * @license  http://www.opensource.org/licenses/gpl-license.php GPL v2.0 (or later)
- * @link     http://www.studiopress.com/themes/genesis
+ * @license  GPL-2.0+
+ * @link     http://my.studiopress.com/themes/genesis
  */
 
 require_once( dirname( __FILE__ ) . '/lib/init.php' );

@@ -52,7 +52,7 @@ register_nav_menus( array(
  * Replace footer
  */
 remove_action('genesis_footer','genesis_do_footer');
-//add_action('genesis_footer','msdsocial_do_footer');
+add_action('genesis_footer','msdsocial_do_footer');
 function msdsocial_do_footer(){
 	global $msd_social;
 	if(has_nav_menu('footer_library_link')){$copyright .= wp_nav_menu( array( 'theme_location' => 'footer_library_link','container_class' => 'ftr-menu','echo' => FALSE ) ).'<br />';}
@@ -85,8 +85,8 @@ function msd_new_custom_layout_logic() {
 }
 
 /** Add new image sizes **/
-add_image_size('child_full', 540, 230, TRUE);
-add_image_size('child_thumbnail', 288, 110, TRUE);
+add_image_size('child_full', 710, 236, TRUE);
+add_image_size('child_thumbnail', 341, 114, TRUE);
 
 /* Manipulate the featured image */
 add_action( 'genesis_before_post', 'msd_post_image', 8 );
@@ -101,7 +101,7 @@ function msd_post_image() {
 	);
 
 	// This is the most important part!  Checks to see if the post has a Post Thumbnail assigned to it. You can delete the if conditional if you want and assume that there will always be a thumbnail
-	if ( has_post_thumbnail() && is_page() ) {
+	if ( has_post_thumbnail() && is_single() ) {
 		printf( '<a title="%s" href="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), genesis_get_image( array( 'size' => $size, 'attr' => $default_attr ) ) );
 	}
 

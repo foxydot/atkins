@@ -545,7 +545,7 @@
 		color: #888;
 	}
 
-	.prefix-notice, .ssl-notice, .different-plugin-version-notice {
+	.prefix-notice, .ssl-notice, .different-plugin-version-notice, .mysqli-notice {
 		background-color: #FFFFE0;
 		border: 1px solid #E6DB55;
 		padding: 15px;
@@ -561,13 +561,17 @@
 		}
 	}
 
-	.different-plugin-version-notice {
+	.different-plugin-version-notice, .mysqli-notice {
 		background-color: #FFEBE8;
 		border-color: #CC0000;
 		a {
 			color: #CC0000;
 			text-decoration: underline;
 		}
+	}
+
+	.mysqli-notice {
+		display: block;
 	}
 
 	.ssl-notice {

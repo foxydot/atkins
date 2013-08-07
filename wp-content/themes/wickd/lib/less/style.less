@@ -114,7 +114,7 @@ body {
 /* Wrap
 ------------------------------------------------------------ */
 
-.wrap {
+#wrap {
 	margin: 0 auto;
 	width: 960px;
 	padding: 0;
@@ -175,9 +175,9 @@ body {
 	#title-area {
 		#title {
 			a {
-				background: url('../img/logo.png') no-repeat center center;
+				background: url('../img/facebook.jpg') no-repeat center -80px;
 				display: block;
-				height: 87px;
+				height: 140px;
 				width: 100%;
 				overflow: hidden;
 				padding: 0;
@@ -244,10 +244,9 @@ body {
 #nav {
 	.quickgradient(@blue);
 	border-top: 1px solid ;
-	border-bottom: 4px solid @white;
+	border-bottom: 1px solid;
 	position: relative;
 	z-index: 50;
-	.drop-shadow(0, 1px, 8px, 0.5); 
 	.wrap:after{.clearfix;}
 	.menu-primary{
 		padding: 0; margin: 0; float:left;
@@ -374,7 +373,7 @@ body {
 
 #content-sidebar-wrap {
 	background: @white;
-	padding: 30px;
+	padding: 30px 0;
 	-moz-box-sizing:    border-box;
 	   -webkit-box-sizing: border-box;
 	   -ms-box-sizing:     border-box;
@@ -989,11 +988,11 @@ input.searchsubmit:hover {
 ------------------------------------------------------------ */
 
 #footer {
-	background: @dkgrey;
-	border: none;
+	border-top: 1px solid @ltgrey;
 	position: relative;
 	bottom: 0;
 	width: 100%;
+	padding: .5em;
 }
 
 #footer .wrap {
