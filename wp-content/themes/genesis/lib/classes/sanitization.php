@@ -63,10 +63,10 @@ class Genesis_Settings_Sanitizer {
 	 *
 	 * @param string $filter Sanitization filter type
 	 * @param string $option Option key
-	 * @param array $suboption Optional. Suboption key
+	 * @param array|string $suboption Optional. Suboption key
 	 * @return boolean Returns true when complete
 	 */
-	function add_filter( $filter, $option, array $suboption = null ) {
+	function add_filter( $filter, $option, $suboption = null ) {
 
 		if ( is_array( $suboption ) ) {
 			foreach ( $suboption as $so ) {

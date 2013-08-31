@@ -46,16 +46,16 @@ function genesis_taxonomy_archive_options( $tag, $taxonomy ) {
 	<table class="form-table">
 		<tbody>
 			<tr class="form-field">
-				<th scope="row" valign="top"><label for="meta[headline]"><?php _e( 'Archive Headline', 'genesis' ); ?></label></th>
+				<th scope="row" valign="top"><label for="genesis-meta[headline]"><?php _e( 'Archive Headline', 'genesis' ); ?></label></th>
 				<td>
-					<input name="meta[headline]" id="meta[headline]" type="text" value="<?php echo esc_attr( $tag->meta['headline'] ); ?>" size="40" />
+					<input name="genesis-meta[headline]" id="genesis-meta[headline]" type="text" value="<?php echo esc_attr( $tag->meta['headline'] ); ?>" size="40" />
 					<p class="description"><?php _e( 'Leave empty if you do not want to display a headline.', 'genesis' ); ?></p>
 				</td>
 			</tr>
 			<tr class="form-field">
-				<th scope="row" valign="top"><label for="meta[intro_text]"><?php _e( 'Archive Intro Text', 'genesis' ); ?></label></th>
+				<th scope="row" valign="top"><label for="genesis-meta[intro_text]"><?php _e( 'Archive Intro Text', 'genesis' ); ?></label></th>
 				<td>
-					<textarea name="meta[intro_text]" id="meta[intro_text]" rows="5" cols="50" class="large-text"><?php echo esc_textarea( $tag->meta['intro_text'] ); ?></textarea>
+					<textarea name="genesis-meta[intro_text]" id="genesis-meta[intro_text]" rows="5" cols="50" class="large-text"><?php echo esc_textarea( $tag->meta['intro_text'] ); ?></textarea>
 					<p class="description"><?php _e( 'Leave empty if you do not want to display any intro text.', 'genesis' ); ?></p>
 				</td>
 			</tr>
@@ -99,23 +99,23 @@ function genesis_taxonomy_seo_options( $tag, $taxonomy ) {
 	<table class="form-table">
 		<tbody>
 			<tr class="form-field">
-				<th scope="row" valign="top"><label for="meta[doctitle]"><?php _e( 'Custom Document Title', 'genesis' ); ?></label></th>
+				<th scope="row" valign="top"><label for="genesis-meta[doctitle]"><?php _e( 'Custom Document Title', 'genesis' ); ?></label></th>
 				<td>
-					<input name="meta[doctitle]" id="meta[doctitle]" type="text" value="<?php echo esc_attr( $tag->meta['doctitle'] ); ?>" size="40" />
+					<input name="genesis-meta[doctitle]" id="genesis-meta[doctitle]" type="text" value="<?php echo esc_attr( $tag->meta['doctitle'] ); ?>" size="40" />
 				</td>
 			</tr>
 
 			<tr class="form-field">
-				<th scope="row" valign="top"><label for="meta[description]"><?php _e( 'Meta Description', 'genesis' ); ?></label></th>
+				<th scope="row" valign="top"><label for="genesis-meta[description]"><?php _e( 'Meta Description', 'genesis' ); ?></label></th>
 				<td>
-					<textarea name="meta[description]" id="meta[description]" rows="5" cols="50" class="large-text"><?php echo esc_html( $tag->meta['description'] ); ?></textarea>
+					<textarea name="genesis-meta[description]" id="genesis-meta[description]" rows="5" cols="50" class="large-text"><?php echo esc_html( $tag->meta['description'] ); ?></textarea>
 				</td>
 			</tr>
 
 			<tr class="form-field">
-				<th scope="row" valign="top"><label for="meta[keywords]"><?php _e( 'Meta Keywords', 'genesis' ); ?></label></th>
+				<th scope="row" valign="top"><label for="genesis-meta[keywords]"><?php _e( 'Meta Keywords', 'genesis' ); ?></label></th>
 				<td>
-					<input name="meta[keywords]" id="meta[keywords]" type="text" value="<?php echo esc_attr( $tag->meta['keywords'] ); ?>" size="40" />
+					<input name="genesis-meta[keywords]" id="genesis-meta[keywords]" type="text" value="<?php echo esc_attr( $tag->meta['keywords'] ); ?>" size="40" />
 					<p class="description"><?php _e( 'Comma separated list', 'genesis' ); ?></p>
 				</td>
 			</tr>
@@ -123,13 +123,13 @@ function genesis_taxonomy_seo_options( $tag, $taxonomy ) {
 			<tr>
 				<th scope="row" valign="top"><?php _e( 'Robots Meta', 'genesis' ); ?></th>
 				<td>
-					<label for="meta[noindex]"><input name="meta[noindex]" id="meta[noindex]" type="checkbox" value="1" <?php checked( $tag->meta['noindex'] ); ?> />
+					<label for="genesis-meta[noindex]"><input name="genesis-meta[noindex]" id="genesis-meta[noindex]" type="checkbox" value="1" <?php checked( $tag->meta['noindex'] ); ?> />
 					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), genesis_code( 'noindex' ) ); ?></label><br />
 
-					<label for="meta[nofollow]"><input name="meta[nofollow]" id="meta[nofollow]" type="checkbox" value="1" <?php checked( $tag->meta['nofollow'] ); ?> />
+					<label for="genesis-meta[nofollow]"><input name="genesis-meta[nofollow]" id="genesis-meta[nofollow]" type="checkbox" value="1" <?php checked( $tag->meta['nofollow'] ); ?> />
 					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), genesis_code( 'nofollow' ) ); ?></label><br />
 
-					<label for="meta[noarchive]"><input name="meta[noarchive]" id="meta[noarchive]" type="checkbox" value="1" <?php checked( $tag->meta['noarchive'] ); ?> />
+					<label for="genesis-meta[noarchive]"><input name="genesis-meta[noarchive]" id="genesis-meta[noarchive]" type="checkbox" value="1" <?php checked( $tag->meta['noarchive'] ); ?> />
 					<?php printf( __( 'Apply %s to this archive?', 'genesis' ), genesis_code( 'noarchive' ) ); ?></label>
 				</td>
 			</tr>
@@ -177,11 +177,11 @@ function genesis_taxonomy_layout_options( $tag, $taxonomy ) {
 				<td>
 					<div class="genesis-layout-selector">
 						<p>
-							<input type="radio" class="default-layout" name="meta[layout]" id="default-layout" value="" <?php checked( $tag->meta['layout'], '' ); ?> />
+							<input type="radio" class="default-layout" name="genesis-meta[layout]" id="default-layout" value="" <?php checked( $tag->meta['layout'], '' ); ?> />
 							<label for="default-layout" class="default"><?php printf( __( 'Default Layout set in <a href="%s">Theme Settings</a>', 'genesis' ), menu_page_url( 'genesis', 0 ) ); ?></label>
 						</p>
 
-						<p><?php genesis_layout_selector( array( 'name' => 'meta[layout]', 'selected' => $tag->meta['layout'], 'type' => 'site' ) ); ?></p>
+						<p><?php genesis_layout_selector( array( 'name' => 'genesis-meta[layout]', 'selected' => $tag->meta['layout'], 'type' => 'site' ) ); ?></p>
 					</div>
 				</td>
 			</tr>
@@ -211,7 +211,7 @@ function genesis_term_meta_save( $term_id, $tt_id ) {
 
 	$term_meta = (array) get_option( 'genesis-term-meta' );
 
-	$term_meta[$term_id] = isset( $_POST['meta'] ) ? (array) $_POST['meta'] : array();
+	$term_meta[$term_id] = isset( $_POST['genesis-meta'] ) ? (array) $_POST['genesis-meta'] : array();
 
 	if ( ! current_user_can( 'unfiltered_html' ) && isset( $term_meta[$term_id]['archive_description'] ) )
 		$term_meta[$term_id]['archive_description'] = genesis_formatting_kses( $term_meta[$term_id]['archive_description'] );

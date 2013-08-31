@@ -267,6 +267,7 @@ function genesis_get_cpt_archive_types() {
  */
 function genesis_get_cpt_archive_types_names() {
 
+	$post_type_names = array();
 	foreach ( genesis_get_cpt_archive_types() as $post_type )
 		$post_type_names[] = $post_type->name;
 
@@ -346,77 +347,77 @@ function genesis_contributors() {
 		array(
 			'name'     => 'Jared Atchison',
 			'url'      => 'http://twitter.com/jaredatch',
-			'gravatar' => 'http://0.gravatar.com/avatar/e341eca9e1a85dcae7127044301b4363?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/e341eca9e1a85dcae7127044301b4363?s=120',
 		),
 		array(
 			'name'     => 'Chris Cochran',
 			'url'      => 'http://twitter.com/tweetsfromchris',
-			'gravatar' => 'http://0.gravatar.com/avatar/aa0bea067ea6bfb854387d73f595aa1c?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/aa0bea067ea6bfb854387d73f595aa1c?s=120',
 		),
 		array(
 			'name'     => 'Nick Croft',
 			'url'      => 'http://twitter.com/nick_thegeek',
-			'gravatar' => 'http://0.gravatar.com/avatar/3241d4eab93215b5487e162b87569e42?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/3241d4eab93215b5487e162b87569e42?s=120',
 		),
 		array(
 			'name'     => 'David Decker',
 			'url'      => 'http://twitter.com/deckerweb',
-			'gravatar' => 'http://0.gravatar.com/avatar/28d02f8d09fc32fccc0282efdc23a4e5?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/28d02f8d09fc32fccc0282efdc23a4e5?s=120',
 		),
 		array(
 			'name'     => 'Remkus de Vries',
 			'url'      => 'http://twitter.com/DeFries',
-			'gravatar' => 'http://0.gravatar.com/avatar/e15799da17422f3fa7a6157339501e2c?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/e15799da17422f3fa7a6157339501e2c?s=120',
 		),
 		array(
 			'name'     => 'Bill Erickson',
 			'url'      => 'http://twitter.com/billerickson',
-			'gravatar' => 'http://0.gravatar.com/avatar/ae510affa31e5b946623bda4ff969b67?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/ae510affa31e5b946623bda4ff969b67?s=120',
 		),
 		array(
 			'name'     => 'Thomas Griffin',
 			'url'      => 'http://twitter.com/jthomasgriffin',
-			'gravatar' => 'http://0.gravatar.com/avatar/fe4225114bfd1f8993c6d20d32227537?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/fe4225114bfd1f8993c6d20d32227537?s=120',
 		),
 		array(
 			'name'     => 'Mark Jaquith',
 			'url'      => 'http://twitter.com/markjaquith',
-			'gravatar' => 'http://0.gravatar.com/avatar/682b7a49f9ed567186c4d1f707fe4523?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/682b7a49f9ed567186c4d1f707fe4523?s=120',
 		),
 		array(
 			'name'     => 'Gary Jones',
 			'url'      => 'http://twitter.com/garyj',
-			'gravatar' => 'http://0.gravatar.com/avatar/e70d4086e89c2e1e081870865be68485?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/e70d4086e89c2e1e081870865be68485?s=120',
 		),
 		array(
 			'name'     => 'Brandon Kraft',
 			'url'      => 'http://twitter.com/kraft',
-			'gravatar' => 'http://0.gravatar.com/avatar/fa4976cfd706b9be00f6494df9aa99d9?s=120',
-		),		
+			'gravatar' => '//0.gravatar.com/avatar/fa4976cfd706b9be00f6494df9aa99d9?s=120',
+		),
 		array(
 			'name'     => 'Andrew Norcross',
 			'url'      => 'http://twitter.com/norcross',
-			'gravatar' => 'http://0.gravatar.com/avatar/26ab8f9b2c86b10e7968b882403b3bf8?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/26ab8f9b2c86b10e7968b882403b3bf8?s=120',
 		),
 		array(
 			'name'     => 'Travis Northcutt',
 			'url'      => 'http://twitter.com/tnorthcutt',
-			'gravatar' => 'https://0.gravatar.com/avatar/a3b6222854e90883765f5f30375718bf?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/a3b6222854e90883765f5f30375718bf?s=120',
 		),
 		array(
 			'name'     => 'Greg Rickaby',
 			'url'      => 'http://twitter.com/GregRickaby',
-			'gravatar' => 'http://0.gravatar.com/avatar/28af3e39c0a1fe4c31367c7e9a8bcac3?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/28af3e39c0a1fe4c31367c7e9a8bcac3?s=120',
 		),
 		array(
 			'name'     => 'Rafal Tomal',
 			'url'      => 'http://twitter.com/rafaltomal',
-			'gravatar' => 'http://0.gravatar.com/avatar/c9f7b936cd19bd5aba8831ddea21f05d?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/c9f7b936cd19bd5aba8831ddea21f05d?s=120',
 		),
 		array(
 			'name'     => 'Travis Smith',
 			'url'      => 'http://twitter.com/wp_smith',
-			'gravatar' => 'http://0.gravatar.com/avatar/7e673cdf99e6d7448f3cbaf1424c999c?s=120',
+			'gravatar' => '//0.gravatar.com/avatar/7e673cdf99e6d7448f3cbaf1424c999c?s=120',
 		),
 	);
 

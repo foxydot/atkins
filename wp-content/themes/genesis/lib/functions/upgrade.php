@@ -85,19 +85,19 @@ function genesis_update_check() {
 }
 
 /**
- * Upgrade the database to version 2006.
+ * Upgrade the database to version 2007.
  *
- * @since 2.0.0
+ * @since 2.0.1
  *
  * @uses _genesis_update_settings() Merges new settings with old settings and pushes them into the database.
  * @uses genesis_get_option()       Get theme setting value.
  */
-function genesis_upgrade_2006() {
+function genesis_upgrade_2007() {
 
 	//* Update Settings
 	_genesis_update_settings( array(
-		'theme_version' => '2.0.0',
-		'db_version'    => '2006',
+		'theme_version' => '2.0.1',
+		'db_version'    => '2007',
 	) );
 
 }
@@ -418,11 +418,11 @@ function genesis_upgrade() {
 		genesis_upgrade_2003();
 
 	###########################
-	# UPDATE DB TO VERSION 2005
+	# UPDATE DB TO VERSION 2007
 	###########################
 
-	if ( genesis_get_option( 'db_version', null, false ) < '2006' )
-		genesis_upgrade_2006();
+	if ( genesis_get_option( 'db_version', null, false ) < '2007' )
+		genesis_upgrade_2007();
 
 	do_action( 'genesis_upgrade' );
 

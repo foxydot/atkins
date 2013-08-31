@@ -79,7 +79,7 @@ function genesis_html5_ie_fix() {
 	if ( ! genesis_html5() )
 		return;
 
-	echo '<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->' . "\n";
+	echo '<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->' . "\n";
 
 }
 

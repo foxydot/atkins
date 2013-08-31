@@ -167,6 +167,7 @@ if(!function_exists("ws_plugin__s2member_configure_options_and_their_defaults"))
 
 				$default_options["login_welcome_page"] = "";
 				$default_options["login_redirection_override"] = "";
+				$default_options["login_redirection_always_http"] = "1";
 				$default_options["membership_options_page"] = "";
 
 				$default_options["login_reg_design_enabled"] = "1";
@@ -189,6 +190,7 @@ if(!function_exists("ws_plugin__s2member_configure_options_and_their_defaults"))
 				$default_options["login_reg_font_family"] = "'Verdana', 'Arial', sans-serif";
 				$default_options["login_reg_font_field_size"] = "18px";
 
+				$default_options["login_reg_footer_backtoblog"] = "0";
 				$default_options["login_reg_footer_design"] = "";
 
 				$default_options["reg_email_from_name"] = get_bloginfo("name");
@@ -426,6 +428,9 @@ if(!function_exists("ws_plugin__s2member_configure_options_and_their_defaults"))
 								else if($key === "login_redirection_override" && (!is_string($value) || !strlen($value)))
 									$value = $default_options[$key];
 
+								else if($key === "login_redirection_always_http" && (!is_string($value) || !is_numeric($value)))
+									$value = $default_options[$key];
+
 								else if($key === "membership_options_page" && (!is_string($value) || !is_numeric($value)))
 									$value = $default_options[$key];
 
@@ -439,6 +444,9 @@ if(!function_exists("ws_plugin__s2member_configure_options_and_their_defaults"))
 									$value = $default_options[$key];
 
 								else if(preg_match("/^login_reg_(?:background|logo|font|footer)_/", $key) && !preg_match("/background_image/", $key) && (!is_string($value) || !strlen($value)))
+									$value = $default_options[$key];
+
+								else if($key === "login_reg_footer_backtoblog" && (!is_string($value) || !is_numeric($value)))
 									$value = $default_options[$key];
 
 								else if(preg_match("/^reg_email_(?:from_name|from_email|support_link)$/", $key) && (!is_string($value) || !strlen($value)))

@@ -167,8 +167,8 @@ function genesis_post_author_link_shortcode( $atts ) {
 		$output .= esc_html( $author );
 		$output .= '</span></a>' . $atts['after'] . '</span>';
 	} else {
-		$author = '<a href="' . esc_url( $url ) . '" title="' . esc_attr( sprintf( __( 'Visit %s&#x02019;s website', 'genesis' ), $author ) ) . '" rel="author external">' . esc_html( $author ) . '</a>';
-		$output = sprintf( '<span class="author vcard">%2$s<span class="fn">%1$s</span>%3$s</span>', esc_html( $author ), $atts['before'], $atts['after'] );
+		$link = '<a href="' . esc_url( $url ) . '" title="' . esc_attr( sprintf( __( 'Visit %s&#x02019;s website', 'genesis' ), $author ) ) . '" rel="author external">' . esc_html( $author ) . '</a>';
+		$output = sprintf( '<span class="author vcard">%2$s<span class="fn">%1$s</span>%3$s</span>', $link, $atts['before'], $atts['after'] );
 	}
 
 	return apply_filters( 'genesis_post_author_link_shortcode', $output, $atts );

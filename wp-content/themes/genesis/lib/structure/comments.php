@@ -427,3 +427,18 @@ function genesis_comment_form_args( array $defaults ) {
 	return apply_filters( 'genesis_comment_form_args', $args, $user_identity, get_the_ID(), $commenter, $req, $aria_req );
 
 }
+
+add_filter( 'get_comments_link', 'genesis_comments_link_filter', 10, 2 );
+/**
+ * Filter the comments link. If post has comments, link to #comments div. If no, link to #respond div.
+ * 
+ * @since 2.0.1
+ */
+function genesis_comments_link_filter( $link, $post_id ) {
+
+	if ( 0 == get_comments_number() )
+		return get_permalink( $post_id ) . '#respond';
+
+	return $link;
+
+}

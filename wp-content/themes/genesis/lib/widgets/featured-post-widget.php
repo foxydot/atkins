@@ -170,9 +170,13 @@ class Genesis_Featured_Post extends WP_Widget {
 				else {
 
 					global $more;
+
+					$orig_more = $more;
 					$more = 0;
 
 					the_content( esc_html( $instance['more_text'] ) );
+
+					$more = $orig_more;
 
 				}
 

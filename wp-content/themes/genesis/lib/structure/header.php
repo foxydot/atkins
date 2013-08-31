@@ -172,7 +172,7 @@ function genesis_default_title( $title, $sep, $seplocation ) {
 	}
 
 	if ( is_post_type_archive() && genesis_has_post_type_archive_support() ) {
-		$title = genesis_get_cpt_option( 'doctitle' );
+		$title = genesis_get_cpt_option( 'doctitle' ) ? genesis_get_cpt_option( 'doctitle' ) : $title;
 	}
 
 	//* If we don't want site name appended, or if we're on the home page
