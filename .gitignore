@@ -27,3 +27,15 @@
 /wp-trackback.php
 /xmlrpc.php
 /wp-admin
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
