@@ -126,8 +126,7 @@ body {
 ------------------------------------------------------------ */
 
 #header {
-	background: @blue;
-	min-height: 72px;
+	min-height: 50px;
 	z-index: 99;
 	position: relative;
 	.wrap {
@@ -173,23 +172,30 @@ body {
 
 .header-image {
 	#title-area {
+	  padding: 1em 0;
 		#title {
+		  width: 220px;
+		  float: right;
 			a {
-				background: url('../img/facebook.jpg') no-repeat center -80px;
+				background: url('../img/logo.png') no-repeat center center /cover;
 				display: block;
-				height: 140px;
-				width: 100%;
+				height: 50px;
+				width: 220px;
 				overflow: hidden;
 				padding: 0;
 				text-indent: -9999px;
 			}
 		}
 	}
+	#title-area:after{.clearfix;}
 }
 
 .header-image #description {
-	display: none;
-	overflow: hidden;
+  .opensans;
+  color: @medgrey;
+  font-size: 2em;
+  margin-top: .5em;
+	padding: 0;
 }
 /* Image Header - Full Width
 ------------------------------------------------------------ */
@@ -201,6 +207,14 @@ body {
 }
 
 */
+
+/* Section Header */
+#section-header{
+  min-height: 200px;
+  background-position: center center;
+    background-size: cover;
+  .wrap{}
+}
 
 /* Header / Primary / Secondary Navigation
 ------------------------------------------------------------ */
@@ -712,7 +726,8 @@ h5 {
 
 #sidebar {
 	float: left;
-	padding: 30px 0 0;
+	padding: 0 0 0 2em;
+	border-left: .5px @ltgrey solid;
 .widget {
 	margin: 0 0 15px;
 	padding: 0 0 15px;

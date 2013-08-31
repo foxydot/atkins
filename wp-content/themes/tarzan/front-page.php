@@ -1,7 +1,7 @@
 <?php
 // Setup Grid Loop
-remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'child_grid_loop_helper' );
+//remove_action( 'genesis_loop', 'genesis_do_loop' );
+//add_action( 'genesis_loop', 'child_grid_loop_helper' );
 function child_grid_loop_helper() {
 	if ( function_exists( 'genesis_grid_loop' ) ) {
 		genesis_grid_loop( array(
@@ -21,7 +21,7 @@ function child_grid_loop_helper() {
 }
 
 // Customize Grid Loop Content
-add_action('genesis_before_post', 'child_switch_content');
+//add_action('genesis_before_post', 'child_switch_content');
 function child_switch_content() {
 	remove_action('genesis_post_content', 'genesis_grid_loop_content');
 	add_action('genesis_post_content', 'child_grid_loop_content');
@@ -73,6 +73,6 @@ function child_grid_divider() {
 }
 
 /** Remove the post meta function for front page only **/
-remove_action( 'genesis_after_post_content', 'genesis_post_meta' );
+//remove_action( 'genesis_after_post_content', 'genesis_post_meta' );
 
 genesis();

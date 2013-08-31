@@ -1,7 +1,7 @@
 <?php
 add_theme_support( 'genesis-footer-widgets', 1 );
 
-add_action('after_setup_theme','msd_child_add_homepage_hero3_sidebars');
+//add_action('after_setup_theme','msd_child_add_homepage_hero3_sidebars');
 function msd_child_add_homepage_hero3_sidebars(){
 	genesis_register_sidebar(array(
 	'name' => 'Homepage Hero',
@@ -30,7 +30,7 @@ function custom_search_text($text) {
 	return esc_attr( 'Begin your search here...' );
 }
 
-add_filter('genesis_breadcrumb_args', 'custom_breadcrumb_args');
+//add_filter('genesis_breadcrumb_args', 'custom_breadcrumb_args');
 function custom_breadcrumb_args($args) {
 	$args['labels']['prefix'] = ''; //marks the spot
 	$args['sep'] = ' > ';
@@ -41,6 +41,7 @@ remove_action('genesis_before_loop', 'genesis_do_breadcrumbs');
 add_action('genesis_before_content_sidebar_wrap', 'genesis_do_breadcrumbs');
 
 remove_action( 'genesis_before_post_content', 'genesis_post_info' );
+add_action( 'genesis_before_post_title', 'genesis_post_info' );
 remove_action( 'genesis_after_post_content', 'genesis_post_meta' );
 /**
  * Add extra menu locations
@@ -71,7 +72,7 @@ function msdsocial_do_footer(){
  * Reversed out style SCS
  * This ensures that the primary sidebar is always to the left.
  */
-add_action('genesis_before', 'msd_new_custom_layout_logic');
+//add_action('genesis_before', 'msd_new_custom_layout_logic');
 function msd_new_custom_layout_logic() {
 	$site_layout = genesis_site_layout();	 
 	if ( $site_layout == 'sidebar-content-sidebar' ) {
@@ -84,25 +85,19 @@ function msd_new_custom_layout_logic() {
 	}
 }
 
-/** Add new image sizes **/
-add_image_size('child_full', 710, 236, TRUE);
-add_image_size('child_thumbnail', 341, 114, TRUE);
 
-/* Manipulate the featured image */
-add_action( 'genesis_before_post', 'msd_post_image', 8 );
-function msd_post_image() {
-	global $post;
-   	//setup thumbnail image args to be used with genesis_get_image();
-	$size = 'post-image'; // Change this to whatever add_image_size you want
-	$default_attr = array(
-			'class' => "alignright attachment-$size $size",
-			'alt'   => $post->post_title,
-			'title' => $post->post_title,
-	);
-
-	// This is the most important part!  Checks to see if the post has a Post Thumbnail assigned to it. You can delete the if conditional if you want and assume that there will always be a thumbnail
-	if ( has_post_thumbnail() && is_single() ) {
-		printf( '<a title="%s" href="%s">%s</a>', get_permalink(), the_title_attribute( 'echo=0' ), genesis_get_image( array( 'size' => $size, 'attr' => $default_attr ) ) );
-	}
-
+add_action ('genesis_after_header','section_featured_image', 5);
+function section_featured_image() {
+    $image = get_stylesheet_directory_uri().'/lib/img/ties.jpg';
+    print '
+    <div id="section-header" style="background-image:url('.$image.');">
+        <div class="wrap"></div>
+    </div>';
 }
+
+add_filter( 'genesis_post_info', 'msdlab_post_info_filter' );
+function msdlab_post_info_filter($post_info) {
+if ( !is_page() ) {
+    $post_info = '[post_date]';
+    return $post_info;
+}}
