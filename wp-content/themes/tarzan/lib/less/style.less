@@ -81,7 +81,7 @@ textarea {
 
 a,
 a:visited {
-	color: @dkblue;
+	color: @blue;
 	text-decoration: none;
 }
 
@@ -420,7 +420,13 @@ body {
 }
 
 .post {
-	margin: 0;
+	margin: 1em auto;
+	padding: 1em 0;
+	border-bottom: .5px solid @ltgrey;
+}
+
+.post:after{
+  .clearfix;
 }
 
 .entry-content {
@@ -618,6 +624,7 @@ h5 {
 .entry-subtitle {
   font-size: 16px;
   font-weight: bold;
+  color: @yellow;
 }
 
 /* Ordered / Unordered Lists

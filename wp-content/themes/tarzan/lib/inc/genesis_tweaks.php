@@ -22,7 +22,7 @@ function msd_child_add_homepage_callout_sidebars(){
 	'id' => 'homepage-callout'
 			));
 }
-add_action('wp_head', 'collections');
+//add_action('wp_head', 'collections');
 
 /** Customize search form input box text */
 add_filter( 'genesis_search_text', 'custom_search_text' );
@@ -101,3 +101,94 @@ if ( !is_page() ) {
     $post_info = '[post_date]';
     return $post_info;
 }}
+
+add_filter( 'excerpt_length', 'msdlab_excerpt_length', 999 );
+function msdlab_excerpt_length( $length ) {
+    return 140;
+}
+
+add_filter( 'excerpt_more', 'msdlab_excerpt_more' );
+function msdlab_excerpt_more( $more ) {
+    return '&hellip; <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">Continue Reading <i class="icon-caret-right icon-large"></i></a>';
+}
+
+add_filter( 'get_the_author_genesis_author_box_single', '__return_true' );
+add_filter('genesis_author_box','msdlab_author_box');
+function msdlab_author_box($author_box){
+    global $authordata;
+    $authordata    = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
+    $social_keys = array(
+        'jabber',
+        'aim',
+        'yim',
+        'twitter',
+        'facebook',
+        'linkedin',
+        'flickr',
+        'myspace',
+        'friendfeed',
+        'delicious',
+        'digg',
+        'feed',
+        'tumblr',
+        'youtube',
+        'blogger',
+        'googleplus',
+        'instagram',
+        'slideshare',
+        'stackoverflow',
+        'posterous',
+        'pinterest'
+    );
+    foreach($social_keys AS $sk){
+        $link = get_the_author_meta($sk,$authordata->ID);
+        if(!empty($link)){
+            $social[$sk] = $link;
+        }
+    }
+    ts_data($social);
+}
+
+/*Add Social URLs*/
+function msdlab_author_contactmethods( $contactmethods ) {
+    if ( !isset( $contactmethods['twitter'] ) )
+        $contactmethods['twitter'] = 'Twitter';
+    if ( !isset( $contactmethods['facebook'] ) )
+        $contactmethods['facebook'] = 'Facebook';
+    if ( !isset( $contactmethods['linkedin'] ) )
+        $contactmethods['linkedin'] = 'LinkedIn';   
+    if ( !isset( $contactmethods['flickr'] ) )
+        $contactmethods['flickr'] = 'Flickr';   
+    if ( !isset( $contactmethods['myspace'] ) )
+        $contactmethods['myspace'] = 'MySpace';     
+    if ( !isset( $contactmethods['friendfeed'] ) )
+        $contactmethods['friendfeed'] = 'Friendfeed';   
+    if ( !isset( $contactmethods['delicious'] ) )
+        $contactmethods['delicious'] = 'Delicious';     
+    if ( !isset( $contactmethods['digg'] ) )
+        $contactmethods['digg'] = 'Digg';   
+    if ( !isset( $contactmethods['feed'] ) )
+        $contactmethods['feed'] = 'XML Feed';   
+    if ( !isset( $contactmethods['tumblr'] ) )
+        $contactmethods['tumblr'] = 'Tumblr';   
+    if ( !isset( $contactmethods['youtube'] ) )
+        $contactmethods['youtube'] = 'YouTube'; 
+    if ( !isset( $contactmethods['blogger'] ) )
+        $contactmethods['blogger'] = 'Blogger'; 
+    if ( !isset( $contactmethods['googleplus'] ) )
+        $contactmethods['googleplus'] = 'Google+'; 
+    if ( !isset( $contactmethods['instagram'] ) )
+        $contactmethods['instagram'] = 'Instagram'; 
+    if ( !isset( $contactmethods['slideshare'] ) )
+        $contactmethods['slideshare'] = 'Slideshare'; 
+    if ( !isset( $contactmethods['stackoverflow'] ) )
+        $contactmethods['stackoverflow'] = 'Stackoverflow'; 
+    if ( !isset( $contactmethods['posterous'] ) )
+        $contactmethods['posterous'] = 'Posterous'; 
+    if ( !isset( $contactmethods['pinterest'] ) )
+        $contactmethods['pinterest'] = 'Pinterest'; 
+            
+    return $contactmethods;
+}
+
+add_filter('user_contactmethods','msdlab_author_contactmethods');

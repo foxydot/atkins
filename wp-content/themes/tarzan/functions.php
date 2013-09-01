@@ -41,7 +41,8 @@ add_action('wp_print_styles', 'msd_add_styles');
 function msd_add_styles() {
 	global $is_IE;
 	if(!is_admin()){
-		wp_enqueue_style('msd-style',get_stylesheet_directory_uri().'/lib/css/style.css');
+        wp_enqueue_style('font-awesome-style','//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
+        wp_enqueue_style('msd-style',get_stylesheet_directory_uri().'/lib/css/style.css');
 		if($is_IE){
 			wp_enqueue_script('ie-style',get_stylesheet_directory_uri().'/lib/css/ie.css');
 		}
