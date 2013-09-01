@@ -550,11 +550,6 @@ h1 {
 	font-size: 30px;
 }
 
-h1.entry-title {
-	text-transform: uppercase;
-	font-size: 24px;
-	font-weight: bold;
-}
 .taxonomy-description h1 {
 	margin: 0;
 }
@@ -615,6 +610,15 @@ h5 {
 	font-size: 18px;
 }
 
+.entry-title {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: normal;
+}
+.entry-subtitle {
+  font-size: 16px;
+  font-weight: bold;
+}
 
 /* Ordered / Unordered Lists
 ------------------------------------------------------------ */
@@ -641,6 +645,28 @@ h5 {
 .post-info {
 	font-size: 14px;
 	margin: -5px 0 15px;
+	span.date{
+	  background: @blue;
+	  color: @white;
+	  font-weight: bold;
+	  border: 2px solid @white;
+	  text-transform: uppercase;
+	  min-width: 101px;
+	  padding: .75em;
+	  position: relative;
+	  .box-shadow(0 0 0 2px @blue);
+	  display: inline-block;
+	}
+	span.date:after{
+	  border-bottom: 24px solid transparent;
+    border-left: 24px solid #005DAB;
+    border-top: 24px solid transparent;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: -28px;
+    top: -2px;
+	}
 }
 
 
