@@ -118,35 +118,46 @@ function msdlab_author_box($author_box){
     global $authordata;
     $authordata    = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
     $social_keys = array(
-        'jabber',
-        'aim',
-        'yim',
-        'twitter',
-        'facebook',
-        'linkedin',
-        'flickr',
-        'myspace',
-        'friendfeed',
-        'delicious',
-        'digg',
-        'feed',
-        'tumblr',
-        'youtube',
-        'blogger',
-        'googleplus',
-        'instagram',
-        'slideshare',
-        'stackoverflow',
-        'posterous',
-        'pinterest'
+        'jabber' => array('title'=>'Jabber','icon'=>'icon-jabber-sign'),
+        'aim' => array('title'=>'AIM','icon'=>'icon-aim-sign'),
+        'yim' => array('title'=>'YIM','icon'=>'icon-yim-sign'),
+        'twitter' => array('title'=>'Twitter','icon'=>'icon-twitter-sign'),
+        'facebook' => array('title'=>'Facebook','icon'=>'icon-facebook-sign'),
+        'linkedin' => array('title'=>'LinkedIn','icon'=>'icon-linkedin-sign'),
+        'flickr' => array('title'=>'Flickr','icon'=>'icon-flickr-sign'),
+        'myspace' => array('title'=>'MySpace','icon'=>'icon-myspace-sign'),
+        'friendfeed' => array('title'=>'FriendFeed','icon'=>'icon-friendfeed-sign'),
+        'delicious' => array('title'=>'Delicious','icon'=>'icon-delicious-sign'),
+        'digg' => array('title'=>'digg','icon'=>'icon-digg-sign'),
+        'feed' => array('title'=>'RSS Feed','icon'=>'icon-rss-feed'),
+        'tumblr' => array('title'=>'Tumblr','icon'=>'icon-tumblr-sign'),
+        'youtube' => array('title'=>'YouTube','icon'=>'icon-youtube-sign'),
+        'blogger' => array('title'=>'Blogger','icon'=>'icon-blogger-sign'),
+        'googleplus' => array('title'=>'Google +','icon'=>'icon-google-plus-sign'),
+        'instagram' => array('title'=>'Instagram','icon'=>'icon-instagram-sign'),
+        'slideshare' => array('title'=>'SlideShare','icon'=>'icon-slideshare-sign'),
+        'stackoverflow' => array('title'=>'Stack Overflow','icon'=>'icon-stackoverflow-sign'),
+        'posterous' => array('title'=>'Posterous','icon'=>'icon-posterous-sign'),
+        'pinterest' => array('title'=>'Pinterest','icon'=>'icon-pinterest-sign')
     );
-    foreach($social_keys AS $sk){
+    foreach($social_keys AS $sk => $sd){
         $link = get_the_author_meta($sk,$authordata->ID);
         if(!empty($link)){
-            $social[$sk] = $link;
+            $social_keys[$sk]['link'] = $link;
+            $social_icons .= '
+            <a href="'.$link.'" title="'.$sd['title'].'" class="'.$sd['icon'].' icon-large"></a>';
         }
     }
-    ts_data($social);
+    $social_icons .= '
+    <a href="'.$link.'" title="Email" class="icon-envelope icon-large"></a>
+    <a href="'.$link.'" title="Share" class="icon-share icon-large"></a>
+    <a href="'.$link.'" title="Print" class="icon-print icon-large"></a>
+    ';
+    $author_box = '<div class="author-box">
+    <div class="author">Posted by '.$authordata->data->display_name.'</div>
+    <div class="social">'.$social_icons.'</div>
+    </div>';
+    return $author_box;
 }
 
 /*Add Social URLs*/
@@ -175,8 +186,6 @@ function msdlab_author_contactmethods( $contactmethods ) {
         $contactmethods['youtube'] = 'YouTube'; 
     if ( !isset( $contactmethods['blogger'] ) )
         $contactmethods['blogger'] = 'Blogger'; 
-    if ( !isset( $contactmethods['googleplus'] ) )
-        $contactmethods['googleplus'] = 'Google+'; 
     if ( !isset( $contactmethods['instagram'] ) )
         $contactmethods['instagram'] = 'Instagram'; 
     if ( !isset( $contactmethods['slideshare'] ) )
