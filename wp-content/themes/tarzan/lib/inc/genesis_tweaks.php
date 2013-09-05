@@ -124,7 +124,7 @@ function msdlab_excerpt_more( $more ) {
 add_filter( 'get_the_author_genesis_author_box_single', '__return_true' );
 add_filter('genesis_author_box','msdlab_author_box');
 function msdlab_author_box($author_box){
-    global $authordata;
+    global $authordata,$post;
     $authordata    = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
     $social_keys = array(
         'jabber' => array('title'=>'Jabber','icon'=>'icon-jabber-sign'),
@@ -170,12 +170,15 @@ function msdlab_author_box($author_box){
         $share = $social_sharing_toolkit->create_bookmarks(get_permalink($image->ID), $image->post_title.' on '.get_option('blogname'));
     }
     $author_box = '<div class="author-box">
-    <div class="author">Posted by '.$authordata->data->display_name.'</div>
-    <div class="social">'.$social_icons.'</div>
-    </div>
+    <div class="author">Posted by <a href="'.get_author_posts_url($authordata->ID).'">'.$authordata->data->display_name.'</a></div>';
+    /*$author_box .='
+    <div class="social">'.$social_icons.'</div>';*/
+    $author_box .= '
     <div class="social-sharing-toolkit">
+    <h3>Share '.$post->post_title.'</h3>
     '.$share.'
     </div>';
+    $author_box .= '</div>';
     return $author_box;
 }
 
