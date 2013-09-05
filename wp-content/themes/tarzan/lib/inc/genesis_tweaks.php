@@ -163,7 +163,7 @@ function msdlab_author_box($author_box){
     if(class_exists('MR_Social_Sharing_Toolkit')){
         $social_sharing_toolkit = new MR_Social_Sharing_Toolkit();
         $share = $social_sharing_toolkit->create_bookmarks(get_permalink($image->ID), $image->post_title.' on '.get_option('blogname'));
-        $share .= '<a href="javascript:window.print();" title="Print" class="icon-print icon-large"></a>';
+        $share .= '<a href="javascript:window.print();" title="Print" class="icon-print"></a>';
     }
     $author_box = '<div class="author-box">
     <div class="author">Posted by <a href="'.get_author_posts_url($authordata->ID).'">'.$authordata->data->display_name.'</a></div>';
