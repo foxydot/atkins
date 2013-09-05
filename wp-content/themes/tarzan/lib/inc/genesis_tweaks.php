@@ -153,6 +153,9 @@ function msdlab_author_box($author_box){
         $link = get_the_author_meta($sk,$authordata->ID);
         if(!empty($link)){
             $social_keys[$sk]['link'] = $link;
+            if(!stripos($link, 'http://')){
+                $link = 'http://'.$link;
+            }
             $social_icons .= '
             <a href="'.$link.'" title="'.$sd['title'].'" class="'.$sd['icon'].' icon-large"></a>';
         }
