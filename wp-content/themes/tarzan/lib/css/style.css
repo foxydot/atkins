@@ -41,7 +41,7 @@ body{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:14px;marg
 .header-image #title-area{padding:1em 0}.header-image #title-area #title{width:220px;float:right}.header-image #title-area #title a{background:url('../img/logo.png') no-repeat center center / cover;display:block;height:50px;width:220px;overflow:hidden;padding:0;text-indent:-9999px}
 .header-image #title-area:after{*zoom:1;content:".";display:block;height:0;clear:both;visibility:hidden}
 .header-image #description{font-family:"Open Sans","Trebuchet MS",Calibri,sans-serif;color:#666;font-size:2em;margin-top:.1em;padding:0}
-#section-header{min-height:200px;background-position:center center;background-size:cover}
+#section-header{min-height:200px;background-image:url('../img/ties.jpg');background-position:center center;background-size:cover}
 .menu-primary li,.menu-secondary li{display:inline-block;list-style:none outside none}
 .menu-secondary{clear:both;color:#666;font-size:10px;margin:0 auto;overflow:hidden;width:auto;float:right}.menu-secondary li{display:inline-block;list-style-type:none}
 .menu-secondary a{color:#666;display:block;padding:7px 15px 6px;position:relative;text-decoration:none}
