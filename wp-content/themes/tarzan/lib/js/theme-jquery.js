@@ -32,4 +32,10 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
+	$('.author-box .icon-share').toggle(function(){
+	    $('.social-sharing-toolkit').slideDown();
+	},function(){
+	    $('.social-sharing-toolkit').slideUp();
+	});
+	
 });
