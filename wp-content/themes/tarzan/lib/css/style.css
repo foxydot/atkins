@@ -121,7 +121,8 @@ h5{font-size:18px}
 .comment-list li .avatar{background-color:#fff;float:right;margin:5px 0 0 10px}
 #sidebar-alt{margin-right:0;float:right}
 #sidebar-alt .widget{background:none;border:none;padding-bottom:2em}
-#sidebar{float:left;padding:0 0 0 2em;border-left:.5px #ccc solid}#sidebar .widget{margin:0 0 15px;padding:0 0 15px}
+#sidebar{float:left;padding:0 0 0 7px}#sidebar .widget{margin:0 0 15px;padding:0 0 15px}
+#sidebar .simple_ads_manager_widget{margin:0;padding:0}
 .sidebar.widget-area ul li,#footer-widgets .widget-area ul li{border-bottom:0 solid #ccc;list-style-type:none;margin:0 0 2px;padding:0 0 0;word-wrap:break-word}
 .sidebar.widget-area .widget_advanced_menu .menu{padding-left:0}.sidebar.widget-area .widget_advanced_menu .menu a:hover{text-decoration:none}
 .sidebar.widget-area .widget_advanced_menu .menu>li{display:none}
