@@ -177,5 +177,5 @@ input.searchsubmit,input.searchsubmit:hover{background:#185da9;background:-webki
 .author-box{background:none;font-size:1.5em}.author-box .author{border-bottom:.5px solid #ccc;margin:0 auto 1em;padding:0 0 1em}
 .author-box .social a:hover{text-decoration:none;color:#0b2c50}
 .social-sharing-toolkit .mr_social_sharing_wrapper{display:inline-block;width:auto}
-.social-sharing-toolkit a.icon-print{display:inline-block;vertical-align:10%}
+.social-sharing-toolkit a.icon-print{display:inline-block;vertical-align:30%;padding:6px}
 .social-sharing-toolkit a.icon-print:hover{text-decoration:none;color:#0b2c50}
