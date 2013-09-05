@@ -1,6 +1,6 @@
 .nav-responsive ul,.nav-responsive li,.nav-responsive li a{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box}
 .nav-responsive a#pull,.subnav-responsive a#subpull{display:none}
-.wrap{width:100%;max-width:960px;min-width:755px;margin:0 auto;overflow:visible}
+#wrap{width:100%;max-width:1000px;min-width:755px;margin:0 auto;overflow:visible}
 .onecol,.twocol,.threecol,.fourcol,.fivecol,.sixcol,.sevencol,.eightcol,.ninecol,.tencol,.elevencol,.content-sidebar #sidebar,.content-sidebar #content,.sidebar-content #content,.sidebar-content #sidebar,.content-sidebar-sidebar #content{margin-right:3.8%;float:left;min-height:1px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 .sidebar-content #content{float:right}
 .wrap .onecol{width:4.85%}
