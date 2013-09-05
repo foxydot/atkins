@@ -157,7 +157,7 @@ function msdlab_author_box($author_box){
                 $link = 'http://'.$link;
             }
             $social_icons .= '
-            <a href="'.$link.'" title="'.$sd['title'].'" class="'.$sd['icon'].' icon-large"></a>';
+            <a href="'.$link.'" title="'.$sd['title'].'" class="'.$sd['icon'].'"></a>';
         }
     }
     if(class_exists('MR_Social_Sharing_Toolkit')){
