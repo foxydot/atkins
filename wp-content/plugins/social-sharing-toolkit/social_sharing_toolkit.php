@@ -150,7 +150,7 @@ class MR_Social_Sharing_Toolkit {
 	// Simple input sanitizing to prevent script injections:
 	function sanitize_value($val) {
 		$val = str_replace('"', '', html_entity_decode($val, ENT_QUOTES));
-		$val = strtr($val, "&;<>'", ";;;;;");
+		$val = strtr($val, ";<>'", ";;;;");
 		return str_replace(";", "", $val);	
 	}
 	
