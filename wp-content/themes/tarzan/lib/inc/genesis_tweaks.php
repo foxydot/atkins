@@ -88,20 +88,22 @@ function msd_new_custom_layout_logic() {
 
 add_action ('genesis_after_header','section_featured_image', 5);
 function section_featured_image() {
-    if(is_archive() && is_category()){
-        global $cat;
-        $category = get_category($cat);
-    } else {
-        $categories = get_the_category();
-        $category = $categories[0];
-    }
-    if(file_exists(get_stylesheet_directory().'/lib/img/'.$category->slug.'.jpg')){
-         $background = ' style="background-image:url('.get_stylesheet_directory_uri().'/lib/img/'.$category->slug.'.jpg);"';
-    }
-    print '
-    <div id="section-header"'.$background.'>
-        <div class="wrap"></div>
-    </div>';
+        if(is_archive() && is_category()){
+            global $cat;
+            $category = get_category($cat);
+        } else {
+            $categories = get_the_category();
+            $category = $categories[0];
+        }
+        if(!is_front_page()){
+            if(file_exists(get_stylesheet_directory().'/lib/img/'.$category->slug.'.jpg')){
+                 $background = ' style="background-image:url('.get_stylesheet_directory_uri().'/lib/img/'.$category->slug.'.jpg);"';
+            }
+        }
+        print '
+        <div id="section-header"'.$background.'>
+            <div class="wrap"></div>
+        </div>';
 }
 
 add_filter( 'genesis_post_info', 'msdlab_post_info_filter' );
