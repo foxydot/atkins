@@ -1,0 +1,1 @@
+[31-Aug-2013 17:05:22 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'collections' not found or invalid function name in /home2/msdlabtw/public_html/atkins/wp-includes/plugin.php on line 406
